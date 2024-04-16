@@ -1,18 +1,15 @@
 import { TodoProvider } from "./context";
+// import "./App.css";
 import { useEffect, useState } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
 import ReactGA from "react-ga4";
-
-const TRACKING_ID = "G-YM57NP3887";
+const TRACKING_ID = "G-L82JGS1TF6";
 ReactGA.initialize(TRACKING_ID);
-
 function App() {
-    useEffect(() => {
-      ReactGA.pageview(window.location.pathname + window.location.search);
-    }, []);
-  
-
+  useEffect(() => {
+    ReactGA.send({hitType:"pageview",page:window.location.pathname + window.location.search});
+  }, []);
   const [todos, setTodos] = useState([]);
 
   const addTodo = (todo) => {
@@ -24,11 +21,9 @@ function App() {
       prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo))
     );
   };
-
   const deleteTodo = (id) => {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
-
   const toggleComplete = (id) => {
     setTodos((prev) =>
       prev.map((prevTodo) =>
@@ -38,7 +33,6 @@ function App() {
       )
     );
   };
-
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem("todos"));
     if (todos && todos.length > 0) {
