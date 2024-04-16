@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
 import ReactGA from "react-ga4";
-const TRACKING_ID = "G-L82JGS1TF6";
+const TRACKING_ID = "G-YM57NP3887";
 ReactGA.initialize(TRACKING_ID);
 function App() {
   useEffect(() => {
